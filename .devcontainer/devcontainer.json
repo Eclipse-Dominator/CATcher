@@ -3,9 +3,9 @@
 {
   "name": "CATcher-development",
   // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-  "image": "mcr.microsoft.com/devcontainers/typescript-node:1-16-bookworm",
-  "workspaceMount": "source=${localWorkspaceFolder},target=/CATcher,type=bind",
-  "workspaceFolder": "/CATcher", // Set the workspace folder
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:1-16",
+  "workspaceFolder": "/home/node/CATcher", // Set the workspace folder
+  "workspaceMount": "source=${localWorkspaceFolder},target=${containerWorkspaceFolder},type=bind",
   "mounts": [
       "source=catcher-node_modules,target=${containerWorkspaceFolder}/node_modules,type=volume"
   ],
@@ -13,7 +13,7 @@
     "--name=CATcher-development" // Set the container name
   ],
   // Use 'postCreateCommand' to run commands after the container is created.
-  "onCreateCommand": "bash /CATcher/.devcontainer/setup_chrome.sh", // Install chrome dependencies for playwright
+  "onCreateCommand": "bash /CATcher/.devcontainer/setup.sh", // Install chrome dependencies for playwright
   "postCreateCommand": "npm install --verbose", // Install dependencies
   // Configure tool-specific properties.
   "customizations": {
